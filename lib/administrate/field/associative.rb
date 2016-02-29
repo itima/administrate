@@ -13,9 +13,11 @@ module Administrate
       protected
 
       def associated_dashboard
-        "#{associated_class_name}Dashboard".constantize.new
-      rescue
-        nil
+        begin
+          "#{associated_class_name}Dashboard".constantize.new
+        rescue
+          nil
+        end
       end
 
       def associated_class
