@@ -9,6 +9,7 @@ module Administrate
         else
           data.to_s
         end
+      end
 
       protected
 
