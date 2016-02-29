@@ -4,13 +4,18 @@ module Administrate
   module Field
     class Associative < Base
       def display_associated_resource
-        associated_dashboard.display_resource(data)
-      end
+        if associated_dashboard.present?
+          associated_dashboard.display_resource(data)
+        else
+          data.to_s
+        end
 
       protected
 
       def associated_dashboard
         "#{associated_class_name}Dashboard".constantize.new
+      rescue
+        nil
       end
 
       def associated_class
